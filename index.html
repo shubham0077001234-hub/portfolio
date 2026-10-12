@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Yadav | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #121212;
+            --crimson: #a30000;
+            --crimson-glow: #ff3333;
+            --parchment: #f5f2eb;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--parchment);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--crimson);
+            border-radius: 4px;
+        }
+
+        .bg-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cinzel', serif;
+            font-size: 35vw;
+            color: rgba(163, 0, 0, 0.03);
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--crimson);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: var(--parchment);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--crimson-glow);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            color: var(--crimson-glow);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background: var(--crimson);
+            color: var(--parchment);
+            border: 1px solid var(--crimson);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--parchment);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--parchment);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-tag {
+            font-family: 'Cinzel', serif;
+            color: var(--crimson-glow);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--crimson);
+        }
+
+        .edu-degree {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-univ {
+            color: var(--crimson-glow);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--crimson);
+        }
+
+        .skill-num {
+            font-family: 'Cinzel', serif;
+            color: var(--crimson-glow);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(163, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .project-tag {
+            font-family: 'Cinzel', serif;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-badge {
+            background: rgba(163, 0, 0, 0.15);
+            color: var(--crimson-glow);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 2px;
+            border: 1px solid rgba(163, 0, 0, 0.3);
+        }
+
+        .project-link {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            color: var(--crimson-glow);
+        }
+
+        .achieve-box {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #150000 100%);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .achieve-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: var(--parchment);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--crimson-glow);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: #050505;
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid, .projects-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-watermark">武</div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">SY.</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-subtitle">First-Semester CS Student</div>
+            <h1>Hi, I'm Shubham Yadav.</h1>
+            <p>Focused on sharpening programming discipline, mastering data structures, and breaking down core computer science concepts from the ground up at JECRC University.</p>
+            <div class="cta-container">
+                <a href="#projects" class="btn btn-primary">View Trials</a>
+                <a href="#contact" class="btn btn-secondary">Connect</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-tag">01 / Profile</div>
+            <h2 class="section-title">The Builder's Mindset</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Embracing the Journey</h3>
+                    <p>I am beginning my path in Computer Science Engineering. Rather than just learning syntax, I enjoy discovering exactly how software works beneath the surface and turning raw concepts into structured, practical projects.</p>
+                    <p>This portfolio serves as a living record of my progression, expanding dynamically with every challenge overcome and skill mastered.</p>
+                </div>
+                <div class="edu-card">
+                    <div class="section-tag">02 / Academy</div>
+                    <div class="edu-degree">Bachelor of Technology (B.Tech)</div>
+                    <div class="edu-univ">Computer Science Engineering</div>
+                    <div class="edu-meta">JECRC University, Jaipur, Rajasthan &bull; Semester 1</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-tag">03 / Disciplines</div>
+            <h2 class="section-title">Current Focus Areas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-num">Ⅰ</span>
+                    <h3>Programming Fundamentals</h3>
+                    <p>Forging core algorithmic logic and training to write clean, maintainable, and structural code.</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-num">Ⅱ</span>
+                    <h3>Data Structures & Algorithms</h3>
+                    <p>Developing structural problem-solving abilities systematically, one pattern at a time.</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-num">Ⅲ</span>
+                    <h3>Web Development</h3>
+                    <p>Deconstructing the mechanics of the web using semantic HTML, structured CSS layouts, and execution flow in JavaScript.</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-num">Ⅳ</span>
+                    <h3>Core Computer Science</h3>
+                    <p>Establishing rock-solid theoretical underpinnings in essential operating principles and computation structures.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-tag">04 / Combat Arena</div>
+            <h2 class="section-title">Projects & Practice</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-tag">Project 01</div>
+                        <h3>Personal Portfolio Website</h3>
+                        <p>A precision-built, fully responsive interface engineered to display academic progression, engineering principles, and live project repositories cleanly.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">View Repository ↗</a>
+                </div>
+                <div class="project-card placeholder-card">
+                    <div>
+                        <div class="project-tag">Next Domain</div>
+                        <h3>Project Coming Soon</h3>
+                        <p>Currently crafting the architecture. This card will showcase the tools, logic metrics, and deployment pipelines of the next operational build.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="section-tag">05 / Milestones</div>
+            <h2 class="section-title">Progress Over Claims</h2>
+            <div class="achieve-box">
+                <h3>Building The Foundation</h3>
+                <p style="color: var(--text-muted);">True credentials are forged through execution. Certifications, operational wins, and competitive benchmarks will be pinned here as they are earned.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-tag">06 / Nexus</div>
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-container">
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Open for collaborative sprints, open-source initiatives, or learning acceleration pipelines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Email ↗</a>
+                    <a href="#" class="social-link">GitHub ↗</a>
+                    <a href="#" class="social-link">LinkedIn ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Shubham Yadav. Built to learn, optimized over time.</p>
+    </footer>
+
+</body>
+</html>
